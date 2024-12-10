@@ -46,7 +46,7 @@ signals = ['ART', 'PLETH', 'ECG_II']
 
 # User-defined parameters
 sampling_rate = 100  # Sampling rate in Hz
-save_dir = './VitalDB_raw/'  # Directory to save the extracted data
+save_dir = './Data/VitalDB/raw/'  # Directory to save the extracted data
 os.makedirs(save_dir, exist_ok=True)  # Create the directory if it doesn't exist
 
 # Find case IDs that include the specified signals
@@ -58,5 +58,8 @@ for caseid in tqdm(caseids, desc="Processing Cases", unit="case"):
     # Load the case data with the specified signals and the user-defined sampling rate
     vals = vitaldb.load_case(caseid, signals, 1 / sampling_rate)
     
+    # Format the caseid as a 4-digit zero-padded string
+    formatted_caseid = f"{int(caseid):04d}"
+    
     # Save the extracted signals (ART, PPG, ECG) into a NumPy file
-    np.save(f"{save_dir}{caseid}.npy", {'ABP': vals[:, 0], 'PPG': vals[:, 1], 'ECG': vals[:, 2]})
+    np.save(f"{save_dir}{formatted_caseid}.npy", {'ABP': vals[:, 0], 'PPG': vals[:, 1], 'ECG': vals[:, 2]})
