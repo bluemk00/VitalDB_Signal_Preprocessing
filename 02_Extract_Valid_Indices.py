@@ -29,9 +29,7 @@ Description:
     - Run the script using Python 3.
 
     Example:
-    ```
-    npy_dir = './Data/VitalDB/raw/'
-    index_dir = './Data/VitalDB/valid_index/'
+    ```bash
     python extract_valid_chunks.py
     ```
 """
@@ -47,7 +45,7 @@ index_dir = './Data/VitalDB/valid_index/'  # Directory to save valid index .npy 
 # Parameters for signal validation
 abp_bounds = (20, 200)  # ABP valid range
 ppg_bounds = (5, 95)    # PPG valid range
-ecg_bounds = (-2, 2)    # ECG valid range
+ecg_bounds = (-1, 2)    # ECG valid range
 min_duration = 60       # Minimum valid duration in seconds
 buffer_seconds = 5      # Buffer duration in seconds
 sampling_rate = 100     # Sampling rate in Hz
@@ -77,7 +75,9 @@ if __name__ == "__main__":
             min_duration, buffer_seconds, sampling_rate
         )
 
-        # Save the valid indices for this caseid
-        np.save(f'{index_dir}{caseid_npy}', overlapping_chunks)
-
-        print(f"Processed {caseid_npy}: Found {len(overlapping_chunks)} valid chunks.")
+        # Save the valid indices for this caseid only if valid chunks are found
+        if overlapping_chunks:
+            np.save(f'{index_dir}{caseid_npy}', overlapping_chunks)
+            print(f"Processed {caseid_npy}: Found {len(overlapping_chunks)} valid chunks.")
+        else:
+            print(f"Processed {caseid_npy}: No valid chunks found.")
