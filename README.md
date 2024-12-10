@@ -1,6 +1,6 @@
 # VitalDB Signal Preprocessing
 
-This repository contains three Python scripts for processing physiological signal data and clinical information from the VitalDB dataset. The scripts facilitate multimodal analysis by extracting, validating, and resampling physiological signals and matching diagnostic labels (`dx`) with standardized ICD-10 codes.
+This repository contains four Python scripts for processing physiological signal data and clinical information from the VitalDB dataset. The scripts cover various stages of data preprocessing, including clinical data mapping, signal extraction, validation, and cleaning. These steps ensure high-quality multimodal datasets for further analysis, facilitating seamless integration between physiological signals and clinical metadata.
 
 ---
 
@@ -92,17 +92,48 @@ This repository contains three Python scripts for processing physiological signa
 
 ---
 
+### **`03_Extract_Clean_Segments.py`**
+#### **Purpose**
+- Extracts clean physiological signal segments (`ABP`, `PPG`, `ECG`) based on precomputed valid indices.
+- Applies stringent signal quality checks to ensure the cleanliness of each segment.
+- Saves cleaned signal segments for further analysis.
+
+#### **Features**
+- Identifies valid overlapping segments using precomputed valid indices.
+- Applies signal quality validation via `is_clean_segment` to ensure segment cleanliness.
+- Extracts overlapping 60-second segments with a 10-second overlap.
+- Saves processed and cleaned segments for each case as `.npy` files.
+
+#### **Usage**
+1. Ensure the input signal data (`.npy` files) and valid indices (`.npy` files) are available.
+2. Run the script:
+   ```bash
+   python 03_Extract_Clean_Segments.py
+   ```
+
+#### **Inputs**
+- `.npy` files containing raw signal data (`ABP`, `PPG`, `ECG`).
+- `.npy` files containing precomputed valid indices.
+
+#### **Outputs**
+- `.npy` files containing processed and cleaned signal segments:
+  - Each file contains cleaned segments for `ABP`, `PPG`, and `ECG`.
+
+---
+
 ## **File Structure**
 ```
 ├── 00_Match_Clinical_Information_with_ICD10_Codes.py
 ├── 01_VitalDB_Signal_Extraction_Script.py
 ├── 02_Extract_Valid_Indices.py
+├── 03_Extract_Clean_Segments.py
 ├── Clinical_Information.csv
 ├── vitaldb_dx_icd10_match.csv
 ├── Data/
 |   └── VitalDB/
 |       ├── raw/          # Directory for extracted signal NumPy files
-|       └── valid_index/  # Directory for valid index NumPy files
+|       ├── valid_index/  # Directory for valid index NumPy files
+|       └── processed/    # Directory for processed and cleaned signal segments
 ├── Clinical_Information_with_icd10.csv
 └── README.md
 ```
@@ -116,6 +147,8 @@ This repository contains three Python scripts for processing physiological signa
   - `pandas`
   - `vitaldb`
   - `tqdm`
+  - `heartpy`
+  - `scikit-learn`
 
 ---
 
