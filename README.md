@@ -66,14 +66,14 @@ This repository contains three Python scripts for processing physiological signa
 
 ### **`02_Extract_Valid_Indices.py`**
 #### **Purpose**
-- Processes extracted physiological signals (`ABP`, `PPG`, `ECG`) to identify valid overlapping segments.
-- Validates each signal using predefined bounds and extracts segments that meet minimum duration and overlap criteria.
+- Processes extracted physiological signals (`ABP`, `PPG`, `ECG`) to identify valid overlapping chunks.
+- Validates each signal using predefined bounds and extracts chunks that meet minimum duration and overlap criteria.
 - Saves the valid indices for each case as `.npy` files.
 
 #### **Features**
 - Validates signals based on configurable lower and upper bounds.
-- Identifies overlapping valid segments across all three signals.
-- Ensures segments meet a minimum duration requirement, including a buffer margin.
+- Identifies overlapping valid chunks across all three signals.
+- Ensures chunks meet a minimum duration requirement, including a buffer margin.
 - Saves valid indices for each case in the specified output directory.
 
 #### **Usage**
@@ -88,7 +88,7 @@ This repository contains three Python scripts for processing physiological signa
 
 #### **Outputs**
 - `.npy` files containing valid indices for each case in the output directory:
-  - Each file contains a list of tuples representing the start and end indices of valid overlapping segments.
+  - Each file contains a list of tuples representing the start and end indices of valid overlapping chunks.
 
 ---
 
