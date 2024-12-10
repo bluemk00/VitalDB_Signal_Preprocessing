@@ -1,4 +1,4 @@
-# VitalDB_Signal_Preprocessing
+# VitalDB Signal Extraction and Clinical Data Matching
 
 This repository contains two Python scripts for processing physiological signal data and clinical information from the VitalDB dataset. The scripts facilitate multimodal analysis by extracting and resampling physiological signals and matching diagnostic labels (`dx`) with standardized ICD-10 codes.
 
