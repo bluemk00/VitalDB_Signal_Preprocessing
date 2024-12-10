@@ -92,7 +92,6 @@ This repository contains two Python scripts for processing physiological signal 
 Author: **Kyoungsuk Park**  
 Date: **2024-12-10**  
 Feel free to contact me for questions or support.
-```
 
 ---
 
