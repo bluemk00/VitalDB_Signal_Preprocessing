@@ -1,6 +1,6 @@
-# VitalDB Signal Extraction and Clinical Data Matching
+# VitalDB Signal Preprocessing
 
-This repository contains two Python scripts for processing physiological signal data and clinical information from the VitalDB dataset. The scripts facilitate multimodal analysis by extracting and resampling physiological signals and matching diagnostic labels (`dx`) with standardized ICD-10 codes.
+This repository contains three Python scripts for processing physiological signal data and clinical information from the VitalDB dataset. The scripts facilitate multimodal analysis by extracting, validating, and resampling physiological signals and matching diagnostic labels (`dx`) with standardized ICD-10 codes.
 
 ---
 
@@ -20,7 +20,7 @@ This repository contains two Python scripts for processing physiological signal 
 1. Ensure the input files (`Clinical_Information.csv` and `vitaldb_dx_icd10_match.csv`) are available in the working directory.
 2. Run the script:
    ```bash
-   python 02_Match_Clinical_Information_with_ICD10_Codes.py
+   python 00_Match_Clinical_Information_with_ICD10_Codes.py
    ```
 
 #### **Inputs**
@@ -54,7 +54,6 @@ This repository contains two Python scripts for processing physiological signal 
    ```
 
 #### **Inputs**
-- `Clinical_Information.csv`: Contains clinical metadata for linking.
 - Signal data from VitalDB.
 
 #### **Outputs**
@@ -65,15 +64,45 @@ This repository contains two Python scripts for processing physiological signal 
 
 ---
 
+### **`02_Extract_Valid_Indices.py`**
+#### **Purpose**
+- Processes extracted physiological signals (`ABP`, `PPG`, `ECG`) to identify valid overlapping segments.
+- Validates each signal using predefined bounds and extracts segments that meet minimum duration and overlap criteria.
+- Saves the valid indices for each case as `.npy` files.
+
+#### **Features**
+- Validates signals based on configurable lower and upper bounds.
+- Identifies overlapping valid segments across all three signals.
+- Ensures segments meet a minimum duration requirement, including a buffer margin.
+- Saves valid indices for each case in the specified output directory.
+
+#### **Usage**
+1. Ensure the extracted signal data (`.npy` files) is stored in the input directory (`npy_dir`).
+2. Run the script:
+   ```bash
+   python 02_Extract_Valid_Indices.py
+   ```
+
+#### **Inputs**
+- `.npy` files containing extracted signal data for each case.
+
+#### **Outputs**
+- `.npy` files containing valid indices for each case in the output directory:
+  - Each file contains a list of tuples representing the start and end indices of valid overlapping segments.
+
+---
+
 ## **File Structure**
 ```
+├── 00_Match_Clinical_Information_with_ICD10_Codes.py
 ├── 01_VitalDB_Signal_Extraction_Script.py
-├── 02_Match_Clinical_Information_with_ICD10_Codes.py
+├── 02_Extract_Valid_Indices.py
 ├── Clinical_Information.csv
 ├── vitaldb_dx_icd10_match.csv
 ├── Data/
 |   └── VitalDB/
-|       └── raw/          # Directory for extracted NumPy files
+|       ├── raw/          # Directory for extracted signal NumPy files
+|       └── valid_index/  # Directory for valid index NumPy files
 ├── Clinical_Information_with_icd10.csv
 └── README.md
 ```
@@ -90,6 +119,5 @@ This repository contains two Python scripts for processing physiological signal 
 
 ---
 
-## **Contact**
 Author: **K. Park**  
 Date: **2024-12-10**  
