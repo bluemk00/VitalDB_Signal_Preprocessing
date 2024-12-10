@@ -41,25 +41,26 @@ import numpy as np
 import vitaldb
 from tqdm import tqdm  # For progress bar visualization
 
-# List of signal types to be extracted
-signals = ['ART', 'PLETH', 'ECG_II']
-
-# User-defined parameters
+# Parameters for signal extraction
+signals = ['ART', 'PLETH', 'ECG_II']  # List of signal types to be extracted
 sampling_rate = 100  # Sampling rate in Hz
 save_dir = './Data/VitalDB/raw/'  # Directory to save the extracted data
-os.makedirs(save_dir, exist_ok=True)  # Create the directory if it doesn't exist
 
-# Find case IDs that include the specified signals
-caseids = vitaldb.find_cases(signals)
-print(f"Total number of case IDs containing the specified signals: {len(caseids)}")
+if __name__ == "__main__":
+    # Create the output directory if it doesn't exist
+    os.makedirs(save_dir, exist_ok=True)
 
-# Loop through each case ID and process the data with a progress bar
-for caseid in tqdm(caseids, desc="Processing Cases", unit="case"):
-    # Load the case data with the specified signals and the user-defined sampling rate
-    vals = vitaldb.load_case(caseid, signals, 1 / sampling_rate)
-    
-    # Format the caseid as a 4-digit zero-padded string
-    formatted_caseid = f"{int(caseid):04d}"
-    
-    # Save the extracted signals (ART, PPG, ECG) into a NumPy file
-    np.save(f"{save_dir}{formatted_caseid}.npy", {'ABP': vals[:, 0], 'PPG': vals[:, 1], 'ECG': vals[:, 2]})
+    # Find case IDs that include the specified signals
+    caseids = vitaldb.find_cases(signals)
+    print(f"Total number of case IDs containing the specified signals: {len(caseids)}")
+
+    # Loop through each case ID and process the data with a progress bar
+    for caseid in tqdm(caseids, desc="Processing Cases", unit="case"):
+        # Load the case data with the specified signals and the user-defined sampling rate
+        vals = vitaldb.load_case(caseid, signals, 1 / sampling_rate)
+        
+        # Format the caseid as a 4-digit zero-padded string
+        formatted_caseid = f"{int(caseid):04d}"
+        
+        # Save the extracted signals (ART, PPG, ECG) into a NumPy file
+        np.save(f"{save_dir}{formatted_caseid}.npy", {'ABP': vals[:, 0], 'PPG': vals[:, 1], 'ECG': vals[:, 2]})
