@@ -28,7 +28,7 @@ The following settings are derived from Apple's experimental configuration for p
 - The sampling rate should be at least twice the highest frequency component of interest to avoid aliasing.
 
 ### **PPG**
-- **Frequency Range**: 0.5–5Hz
+- **Frequency Range**: 0.4–5Hz
 - **Minimum Sampling Rate**: 10Hz
 - **Key Analysis**: Heart rate variability, respiratory-related variations.
 
@@ -38,8 +38,8 @@ The following settings are derived from Apple's experimental configuration for p
 - **Key Analysis**: QRS complex analysis, arrhythmia detection.
 
 ### **ABP (Arterial Blood Pressure)**
-- **Frequency Range**: 0.5–10Hz
-- **Minimum Sampling Rate**: 20Hz
+- **Frequency Range**: 0.5–20Hz
+- **Minimum Sampling Rate**: 40Hz
 - **Key Analysis**: Blood pressure variability, waveform dynamics.
 
 ---
@@ -61,7 +61,7 @@ The following settings are derived from Apple's experimental configuration for p
 
 ### **Broad Compatibility Across Signals**
 - **PPG and ABP**:
-  - Exceeds the Nyquist requirement for PPG (0.5–5Hz) and ABP (0.5–10Hz).
+  - Exceeds the Nyquist requirement for PPG (0.4–5Hz) and ABP (0.5–20Hz).
   - Provides sufficient detail for heart rate variability and blood pressure waveform analysis.
 - **ECG**:
   - While 128Hz is often used for precise QRS complex analysis, 100Hz is adequate for standard rhythm and waveform monitoring.
@@ -83,3 +83,5 @@ This guide aims to assist researchers and practitioners in setting up and analyz
 
 **References**
 1. Abbaspourazad, Salar, et al. "Large-scale training of foundation models for wearable biosignals." arXiv preprint arXiv:2312.05409 (2023).
+2. Ismail, Shahid, Usman Akram, and Imran Siddiqi. "Heart rate tracking in photoplethysmography signals affected by motion artifacts: A review." EURASIP Journal on Advances in Signal Processing 2021.1 (2021): 5.
+3. Kligfield, Paul, et al. "Recommendations for the standardization and interpretation of the electrocardiogram: part I: the electrocardiogram and its technology: a scientific statement from the American Heart Association Electrocardiography and Arrhythmias Committee, Council on Clinical Cardiology; the American College of Cardiology Foundation; and the Heart Rhythm Society endorsed by the International Society for Computerized Electrocardiology." Circulation 115.10 (2007): 1306-1324.
