@@ -152,14 +152,14 @@ This repository contains four Python scripts for processing physiological signal
 
 ---
 
+## License
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE.txt) file for details.
+
+---
+
 ## Contact
 
 If you have any questions, feel free to reach out:
 
 - Email: [bluemk00@gmail.com](mailto:bluemk00@gmail.com)
 - GitHub: [bluemk00](https://github.com/bluemk00)
-
----
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](./LICENSE.txt) file for details.
