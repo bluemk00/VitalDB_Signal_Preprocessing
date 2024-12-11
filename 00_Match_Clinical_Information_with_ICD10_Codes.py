@@ -31,7 +31,7 @@ Description:
 
     File sources:
     - `Clinical_Information.csv`: From VitalDB, containing raw clinical data.
-    - `vitaldb_dx_icd10_match.csv`: Created by K. Park on 2024-09-05, providing mappings between
+    - `vitaldb_dx_icd10_match.csv`: Created by K. Park, providing mappings between
       non-standard diagnostic labels (`dx`) and the most similar ICD-10 codes.
 
     Key column:
