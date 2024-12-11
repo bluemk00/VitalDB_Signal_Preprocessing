@@ -75,6 +75,7 @@ The following settings are derived from Apple's experimental configuration for p
 ---
 
 Author: **K. Park**  (with ChatGPT 4o)
+
 Date: **2024-12-11**  
 
 This guide aims to assist researchers and practitioners in setting up and analyzing physiological signal data, providing practical recommendations and reference configurations for diverse applications.
