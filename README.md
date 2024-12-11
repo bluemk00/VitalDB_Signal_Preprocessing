@@ -154,3 +154,8 @@ This repository contains four Python scripts for processing physiological signal
 
 Author: **K. Park**  
 Date: **2024-12-10**  
+
+---
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
