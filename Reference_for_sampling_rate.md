@@ -74,7 +74,12 @@ The following settings are derived from Apple's experimental configuration for p
 
 ---
 
-Author: **K. Park**
+Author: **K. Park**  
 Date: **2024-12-11**  
 
 This guide aims to assist researchers and practitioners in setting up and analyzing physiological signal data, providing practical recommendations and reference configurations for diverse applications.
+
+---
+
+**References**
+1. Abbaspourazad, Salar, et al. "Large-scale training of foundation models for wearable biosignals." arXiv preprint arXiv:2312.05409 (2023).
